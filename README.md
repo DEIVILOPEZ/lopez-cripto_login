@@ -1,24 +1,31 @@
 # López Cripto 🚀
 
-Plataforma web interactiva para la consulta de cotizaciones de criptomonedas en tiempo real, calculadora de conversión de divisas e interfaz de autenticación (Login / Registro).
+Plataforma web interactiva para la consulta de cotizaciones de criptomonedas en tiempo real, calculadora de conversión de divisas, gestión de billetera simulada y sistema de autenticación dual (Django REST Framework + Google OAuth2).
 
 ---
 
 ## 🛠️ Tecnologías utilizadas
 
-* **Frontend:** React + Vite[cite: 7]
-* **Estilos:** Custom CSS3 (Diseño Neomórfico y Dark Mode)[cite: 7]
-* **Backend:** Django REST Framework[cite: 7]
+* **Frontend:** React + Vite, @react-oauth/google
+* **Estilos:** Custom CSS (Diseño Neomórfico, Dark Mode y responsive layout)
+* **Backend:** Django REST Framework (DRF)
+* **Autenticación:** JWT, Django Auth & Google OAuth2
+* **APIs externas:** Binance API (Precios en vivo)
 * **Despliegue / Entorno:** Docker & Docker Compose
 
 ---
 
 ## ✨ Características principales
 
-- 📊 **Cotizaciones en vivo:** Muestra de precios actualizados para BTC, ETH, SOL, USDT, BNB, etc.
-- 🧮 **Calculadora Cripto:** Simulación de compra/venta de activos en tiempo real.
-- 🔐 **Autenticación:** Modal dinámico e interactivo para Login y Registro de usuarios.
-- 🎨 **Diseño Moderno:** Interfaz responsiva adaptada a dispositivos móviles y escritorio.
+- 📊 **Cotizaciones Binance en Vivo:** Precios actualizados en tiempo real para BTC, ETH, BNB, SOL, XRP y USDT con tasas dinámicas en Soles (PEN) y Dólares (USD).
+- 🔐 **Autenticación Dual:** 
+  - Login y registro tradicional con email y contraseña en Django DRF.
+  - Inicio de sesión rápido e integrado con **Google OAuth2**.
+- 👤 **Perfil de Usuario Persistente:** Modal con visualización dinámica de la cuenta, ID asignado en Django (`#USR-ID`) y estado de verificación.
+- 🔥 **Criptos en Tendencia:** Sección lateral interactiva con el rendimiento de los tokens más populares del mercado (PEPE, DOGE, SHIB, SUI).
+- 💼 **Billetera Virtual:** Gestión de saldos simulados multitabla en PEN, USD y criptomonedas.
+- 🧮 **Calculadora Cripto:** Simulación de compra/venta con cálculo de comisiones estimado en tiempo real.
+- 🎨 **Branding Personalizado:** Interfaz con logo corporativo oficial servido desde la estructura pública de Vite.
 
 ---
 
