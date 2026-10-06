@@ -86,3 +86,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # 12. Permite peticiones desde la aplicación React/Vite
 CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True

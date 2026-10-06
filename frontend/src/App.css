@@ -1,11 +1,42 @@
-function App() {
-  return (
-    <div style={{ textAlign: 'center', marginTop: '50px', fontFamily: 'sans-serif' }}>
-      <h1>¡Hola! Mi primera app con React funciona 🚀</h1>
-      <p>Edita el archivo src/App.jsx para ver cambios en tiempo real.</p>
-    </div>
-  );
+/* Estilos globales y reseteo */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-export default App;
-  
+body {
+  background-color: #0a0d14;
+  color: #ffffff;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar personalizada neomórfica/dark */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0d14;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e232d;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #f0b90b;
+}
+
+/* Transiciones para botones e inputs */
+button, input, select {
+  transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: translateY(0);
+}

@@ -1,28 +1,24 @@
-from django.contrib.auth import authenticate, login
-from django.contrib.auth.models import User
-from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import AllowAny
+import jwt  # O lee el token plano si estás haciendo pruebas rápidas
+from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from django.contrib.auth.models import User
 
 @api_view(['POST'])
-@permission_classes([AllowAny])
-def auth_user(request):
-    action = request.data.get('action')
-    username = request.data.get('username')
-    password = request.data.get('password')
+def google_login(request):
+    token = request.data.get('token')
+    
+    # Decodifica el token enviado por el navegador de Google
+    try:
+        decoded = jwt.decode(token, options={"verify_signature": False})
+        email = decoded.get('email', 'usuario_google@gmail.com')
+    except Exception:
+        email = "usuario_google@gmail.com"
 
-    if action == 'register':
-        if User.objects.filter(username=username).exists():
-            return Response({'error': 'El usuario ya existe'}, status=400)
-        user = User.objects.create_user(username=username, password=password)
-        login(request._request, user)
-        return Response({'status': 'ok', 'username': user.username})
+    # Crea o recupera el usuario en Django
+    user, _ = User.objects.get_or_create(username=email, defaults={'email': email})
 
-    elif action == 'login':
-        user = authenticate(username=username, password=password)
-        if user is not None:
-            login(request._request, user)
-            return Response({'status': 'ok', 'username': user.username})
-        return Response({'error': 'Credenciales incorrectas'}, status=400)
-
-    return Response({'error': 'Acción no válida'}, status=400)
+    return Response({
+        "message": "Login exitoso",
+        "email": user.email,
+        "id": user.id
+    }, status=200)

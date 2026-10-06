@@ -2,9 +2,9 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    # TUS RUTAS ANTERIORES (ejemplo si tenías vistas previas):
-    # path('', views.mi_vista_anterior, name='home'),
-
     # RUTA DE AUTENTICACIÓN
     path('auth/', views.auth_user, name='auth_user'),
+    
+    # RUTA DE GOOGLE LOGIN
+    path('google-login/', views.google_login, name='google_login'),
 ]
